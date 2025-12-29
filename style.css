@@ -740,3 +740,46 @@ body.light-mode #theme-toggle .fa-sun {
         font-size: 0.85rem;
     }
 }
+
+.footer-location {
+    color: var(--accent-sky);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.contact-methods {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    margin: 2rem 0;
+}
+
+.btn-call {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 28px;
+    background: var(--text-main);
+    color: var(--bg-obsidian);
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 700;
+    transition: 0.3s;
+}
+
+.btn-call:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px var(--accent-glow);
+    filter: brightness(1.1);
+}
+
+/* Ensure email and call button look good together */
+.footer-email {
+    margin: 0 !important;
+    /* Resetting the previous margin */
+}
