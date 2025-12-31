@@ -1,6 +1,6 @@
 # 🚀 abrshiz Portfolio | Full-Stack Developer
 
-[![License: MIT](https://abrshiz-portifolio.netlify.app/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Portfolio](https://img.shields.io/badge/Portfolio-Live-brightgreen)](https://your-portfolio-link.com)
 
 A high-performance, responsive personal portfolio built with a focus on modern UI/UX and clean code architecture. This project showcases my journey, skills, and the scalable solutions I've built.
