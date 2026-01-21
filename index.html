@@ -4,11 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>abrshiz | Software Developer</title>
+    <title>abrshiz | Software Developer Portfolio</title>
+    <meta name="description"
+        content="Software Developer specializing in Java, Web Applications, and Full-Stack Development. Building scalable solutions with modern technologies.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Plus+Jakarta+Sans:wght@700;800&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -16,275 +18,492 @@
 
 <body id="home">
 
-    <nav>
+    <!-- Navigation -->
+    <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">abrshiz<span>.</span></div>
-            <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Work</a></li>
-                <li><a href="#contact">Contact</a></li>
+            <a href="#home" class="logo">abrshiz<span class="logo-dot">.</span></a>
+
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link">Home</a></li>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li>
+                    <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
+                        <i class="fas fa-moon"></i>
+                        <i class="fas fa-sun"></i>
+                    </button>
+                </li>
             </ul>
 
-            <button id="theme-toggle" aria-label="Toggle dark mode">
-                <i class="fas fa-moon"></i>
-                <i class="fas fa-sun"></i>
-            </button>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
         </div>
     </nav>
 
+    <!-- Hero Section -->
     <header class="hero" id="home">
-        <div class="container hero-container">
-            <div class="hero-content">
-                <div class="badge"><span class="dot"></span> Available for new projects</div>
-                <h1>Building <span class="gradient-text">Scalable</span> digital solutions.</h1>
-                <p class="bio">Focused on high-performance applications and seamless user experiences.</p>
-                <div class="cta-group">
-                    <a href="#projects" class="btn primary">View Projects</a>
-                    <a href="#" class="btn secondary" id="copy-email">Copy Email</a>
-                </div>
-            </div>
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-content">
+                    <div class="hero-badge">
+                        <span class="badge-dot"></span>
+                        <span class="badge-text">Available for Freelance Work</span>
+                    </div>
+                    <h1 class="hero-title">
+                        <span class="hero-line">Full-Stack Developer</span>
+                        <span class="hero-line gradient-text">Building Digital</span>
+                        <span class="hero-line gradient-text">Solutions</span>
+                    </h1>
+                    <p class="hero-description">
+                        I specialize in creating robust, scalable applications using modern technologies.
+                        From backend APIs to intuitive frontends, I build solutions that solve real problems.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#projects" class="btn btn-primary">
+                            <i class="fas fa-code"></i> View Projects
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <i class="fas fa-paper-plane"></i> Contact Me
+                        </a>
+                    </div>
 
-            <div class="hero-image">
-                <div class="image-wrapper">
-                    <img src="/images/photo_2025-12-29_12-17-17.jpg" alt="abrshiz">
-                    <div class="image-glow"></div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Projects</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">8</span>
+                            <span class="stat-label">Technologies</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number">100%</span>
+                            <span class="stat-label">Client Satisfaction</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="profile-card">
+                        <div class="profile-image">
+                            <img src="/images/photo_2025-12-29_12-17-17.jpg" alt="abrshiz - Software Developer">
+                            <div class="image-glow"></div>
+                        </div>
+                        <!-- <div class="profile-tech">
+                            <div class="tech-tag java">Java</div>
+                            <div class="tech-tag react">React</div>
+                            <div class="tech-tag node">Node.js</div>
+                            <div class="tech-tag python">Python</div>
+                        </div> -->
+                    </div>
                 </div>
             </div>
         </div>
     </header>
 
-    <section id="about" class="about-section">
+    <!-- About Section -->
+    <section id="about" class="section about-section">
         <div class="container">
-            <h2 class="section-label">About Me</h2>
-            <div class="about-grid">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">My journey in software development</p>
+            </div>
+
+            <div class="about-content">
                 <div class="about-text">
-                    <p class="bio">
-                        I am a Developer focused on high-performance web applications.
-                        I turn complex technical requirements into seamless user experiences using
-                        modern frameworks and industry-standard best practices.
+                    <p>
+                        I'm a passionate software developer with expertise in <strong>Java development</strong> and
+                        <strong>full-stack web applications</strong>. My focus is on building clean, maintainable
+                        code that solves complex problems efficiently.
                     </p>
-                    <p class="bio-sub">
-                        With a strong foundation in **Java** and **Front End development**, I specialize in building
-                        systems that are not only functional but also scalable and secure. My approach combines
-                        technical logic with a clean aesthetic.
+                    <p>
+                        With a background in both backend systems and frontend interfaces, I bridge the gap between
+                        technical requirements and user experience. I believe in writing code that not only works
+                        but is also scalable and easy to understand.
                     </p>
+
+                    <div class="about-highlights">
+                        <div class="highlight">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Strong OOP & Design Patterns</span>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Database Design & Optimization</span>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-check-circle"></i>
+                            <span>API Development & Integration</span>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Clean Code & Best Practices</span>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="about-stats">
-                    <div class="stat-card">
-                        <h4>Location</h4>
-                        <p>Remote / Global</p>
+                <div class="about-experience">
+                    <div class="experience-card">
+                        <div class="exp-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Development Focus</h3>
+                        <p>Full-Stack Applications, REST APIs, Database Systems, Web Development</p>
                     </div>
-                    <div class="stat-card">
-                        <h4>Experience</h4>
-                        <p>Junior Developer</p>
-                    </div>
-                    <div class="stat-card">
-                        <h4>Philosophy</h4>
-                        <p>Clean Code & Precision</p>
+
+                    <div class="experience-card">
+                        <div class="exp-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Location</h3>
+                        <p>Dire Dawa, Ethiopia (Remote Available)</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="skills" class="skills-section">
+    <!-- Skills Section -->
+    <section id="skills" class="section skills-section">
         <div class="container">
-            <h2 class="section-label">Technical Expertise</h2>
+            <div class="section-header">
+                <h2 class="section-title">Technical Skills</h2>
+                <p class="section-subtitle">Technologies I work with</p>
+            </div>
 
-            <div class="skills-container">
+            <div class="skills-grid">
+                <!-- Languages -->
                 <div class="skill-category">
-                    <h3><i class="fas fa-code"></i> Languages</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item"><i class="fab fa-java" style="color: #ed8b00;"></i> Java</div>
-                        <div class="skill-item"><i class="fab fa-python" style="color: #3776ab;"></i> Python</div>
-                        <div class="skill-item"><i class="fab fa-js" style="color: #f7df1e;"></i> JavaScript</div>
-                        <div class="skill-item"><i class="fas fa-copyright" style="color: #00599C;"></i> C++</div>
-                        <div class="skill-item"><i class="fab fa-html5" style="color: #e34f26;"></i> HTML5</div>
-                        <div class="skill-item"><i class="fab fa-php" style="color: #777bb4;"></i> PHP</div>
+                    <h3 class="category-title">
+                        <i class="fas fa-code"></i>
+                        Programming Languages
+                    </h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Java</span>
+                                <span class="skill-level">Advanced</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">JavaScript</span>
+                                <span class="skill-level">Intermediate</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Python</span>
+                                <span class="skill-level">Intermediate</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">C++</span>
+                                <span class="skill-level">Intermediate</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 65%"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
+                <!-- Frameworks & Tools -->
                 <div class="skill-category">
-                    <h3><i class="fas fa-layer-group"></i> Frameworks & DB</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item"><i class="fab fa-react" style="color: #61dafb;"></i> React</div>
-                        <div class="skill-item"><i class="fas fa-database" style="color: #336791;"></i> PostgreSQL</div>
-                        <div class="skill-item"><i class="fas fa-server" style="color: #4479a1;"></i> MySQL</div>
-                        <div class="skill-item"><i class="fas fa-envira" style="color: #47a248;"></i> MongoDB</div>
-                        <div class="skill-item"><i class="fab fa-node-js" style="color: #339933;"></i> Node.js</div>
-                        <div class="skill-item"><i class="fas fa-wind" style="color: #06b6d4;"></i> Tailwind CSS</div>
+                    <h3 class="category-title">
+                        <i class="fas fa-layer-group"></i>
+                        Frameworks & Databases
+                    </h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">React.js</span>
+                                <span class="skill-level">Intermediate</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Node.js</span>
+                                <span class="skill-level">Intermediate</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">MySQL</span>
+                                <span class="skill-level">Advanced</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">MongoDB</span>
+                                <span class="skill-level">Basic</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 60%"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
+                <!-- Development Tools -->
                 <div class="skill-category">
-                    <h3><i class="fas fa-tools"></i> Developer Tools</h3>
-                    <div class="skills-grid">
-                        <div class="skill-item"><i class="fab fa-github"></i> GitHub</div>
-                        <div class="skill-item"><i class="fas fa-terminal" style="color: #4af626;"></i> Linux</div>
-                        <div class="skill-item"><i class="fab fa-git-alt" style="color: #f05032;"></i> Git</div>
-                        <div class="skill-item"><i class="fas fa-code" style="color: #007acc;"></i> VS Code</div>
-                        <div class="skill-item"><i class="fas fa-rocket" style="color: #ff6c37;"></i> Postman</div>
-                        <div class="skill-item"><i class="fab fa-npm" style="color: #cb3837;"></i> NPM</div>
+                    <h3 class="category-title">
+                        <i class="fas fa-tools"></i>
+                        Development Tools
+                    </h3>
+                    <div class="skills-list">
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Git & GitHub</span>
+                                <span class="skill-level">Advanced</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 85%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">VS Code</span>
+                                <span class="skill-level">Advanced</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 90%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Linux/Unix</span>
+                                <span class="skill-level">Intermediate</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 75%"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span class="skill-name">Postman</span>
+                                <span class="skill-level">Intermediate</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress" style="width: 70%"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="projects">
+    <!-- Projects Section -->
+    <section id="projects" class="section projects-section">
         <div class="container">
-            <h2 class="section-label">Selected Projects</h2>
-            <div class="project-grid">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Real-world applications I've built</p>
+            </div>
 
+            <div class="projects-grid">
+                <!-- Project 1 -->
                 <div class="project-card">
-                    <img src="https://www.damienfremont.com/upload/post-thumbnail-tdd.png" alt="To Do List">
-                    <div class="card-body">
-                        <div class="tags"><span>Java</span> <span>OOP</span> <span>MySQL</span></div>
-                        <h3>JAVA Oriented TODO List</h3>
-                        <p>Task management tool leveraging Object-Oriented principles and modular architecture.</p>
-                        <div class="project-links-container">
+                    <div class="project-image">
+                        <img src="https://www.damienfremont.com/upload/post-thumbnail-tdd.png"
+                            alt="Task Management System">
+                        <div class="project-overlay">
+                            <div class="project-tech">
+                                <span>Java</span>
+                                <span>MySQL</span>
+                                <span>OOP</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Task Management System</h3>
+                        <p class="project-description">
+                            A comprehensive task management application built with Java, featuring user authentication,
+                            task categorization, and deadline tracking. Implements SOLID principles and clean
+                            architecture.
+                        </p>
+                        <div class="project-links">
                             <a href="https://github.com/abrshiz/Java-Oriented-To-Do-List-App.git" class="project-link"
                                 target="_blank">
-                                <i class="fab fa-github"></i> Source Code
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="#" class="project-link">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
                             </a>
                         </div>
                     </div>
                 </div>
 
+                <!-- Project 2 -->
                 <div class="project-card">
-                    <img src="https://ik.imagekit.io/ably/ghost/prod/2023/01/build-a-realtime-chat-app-from-scratch--1-.png?tr=w-1728,q-50"
-                        alt="Chat Application">
-                    <div class="card-body">
-                        <div class="tags"><span>Java</span> <span>Sockets</span> <span>MySQL</span></div>
-                        <h3>Real Time Socket Chat App</h3>
-                        <p>Multi-client networked messaging system with real-time data transmission.</p>
-                        <div class="project-links-container">
+                    <div class="project-image">
+                        <img src="https://ik.imagekit.io/ably/ghost/prod/2023/01/build-a-realtime-chat-app-from-scratch--1-.png?tr=w-1728,q-50"
+                            alt="Real-time Chat Application">
+                        <div class="project-overlay">
+                            <div class="project-tech">
+                                <span>Java</span>
+                                <span>Sockets</span>
+                                <span>Multithreading</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Real-time Chat Application</h3>
+                        <p class="project-description">
+                            Multi-client chat system using Java Sockets. Features real-time messaging,
+                            user authentication, and message history with MySQL database integration.
+                        </p>
+                        <div class="project-links">
                             <a href="/Doc/Socket.pdf" class="project-link" target="_blank">
-                                <i class="far fa-file-pdf"></i> Documentation
+                                <i class="far fa-file-pdf"></i> Docs
                             </a>
                             <a href="https://github.com/abrshiz/Java-Oriented-Socket-Chat-App.git" class="project-link"
                                 target="_blank">
-                                <i class="fab fa-github"></i> Source Code
+                                <i class="fab fa-github"></i> Code
                             </a>
                         </div>
                     </div>
                 </div>
 
+                <!-- Project 3 -->
                 <div class="project-card">
-                    <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240229162347/Hospital-Management-System.webp"
-                        alt="HMS">
-                    <div class="card-body">
-                        <div class="tags"><span>Java</span> <span>Swing</span> <span>MySQL</span></div>
-                        <h3>Java Oriented HMS</h3>
-                        <p>A full-scale hospital management application built with OOP principles. Features automated
-                            patient records, billing, and inventory management via a Swing-based GUI and MySQL backend.
+                    <div class="project-image">
+                        <img src="https://media.geeksforgeeks.org/wp-content/uploads/20240229162347/Hospital-Management-System.webp"
+                            alt="Hospital Management System">
+                        <div class="project-overlay">
+                            <div class="project-tech">
+                                <span>Java</span>
+                                <span>Swing</span>
+                                <span>MySQL</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h3 class="project-title">Hospital Management System</h3>
+                        <p class="project-description">
+                            Complete hospital management solution with patient records, appointment scheduling,
+                            billing system, and inventory management using Java Swing GUI.
                         </p>
-                        <div class="project-links-container">
+                        <div class="project-links">
                             <a href="https://github.com/wegen-jr/java-project.git" class="project-link" target="_blank">
-                                <i class="fab fa-github"></i> Source Code
+                                <i class="fab fa-github"></i> Code
                             </a>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <div class="project-card">
-                    <img src="https://www.skoolbeep.com/blog/wp-content/uploads/2020/12/WHAT-IS-THE-PURPOSE-OF-A-LIBRARY-MANAGEMENT-SYSTEM-min.png"
-                        alt="LMS">
-                    <div class="card-body">
-                        <div class="tags"><span>Java</span> <span>OOP</span></div>
-                        <h3>Java Based Library System</h3>
-                        <p>An architectural exercise in Java integrating OOP, file handling, and data structures.
-                            Streamlines book tracking and member records within a cohesive, terminal-based application.
-                        </p>
-                        <div class="project-links-container">
-                            <a href="https://github.com/abrshiz/Java-Based-Library-Management-System.git"
-                                class="project-link" target="_blank">
-                                <i class="fab fa-github"></i> Source Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <img src="https://plutuseducation.com/blog/wp-content/uploads/2024/12/image-99.jpeg"
-                        alt="Banking System">
-                    <div class="card-body">
-                        <div class="tags"><span>C++</span> <span>File I/O</span> <span>OOP</span></div>
-                        <h3>C++ Based Banking App</h3>
-                        <p>A high-performance terminal application managing secure financial transactions.
-                            Features include persistent file-based account storage, encrypted PIN authentication,
-                            and real-time balance updates for deposits, withdrawals, and transfers.
-                        </p>
-                        <div class="project-links-container">
-                            <a href="https://github.com/abrshiz/C-Based-Banking-App.git" class="project-link"
-                                target="_blank">
-                                <i class="fab fa-github"></i> Source Code
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <div class="projects-cta">
+                <a href="https://github.com/abrshiz" class="btn btn-outline" target="_blank">
+                    <i class="fab fa-github"></i> View All Projects on GitHub
+                </a>
             </div>
         </div>
     </section>
 
-    <footer class="footer-section" id="contact">
-        <div class="footer-glow"></div>
+    <!-- Contact Section -->
+    <footer id="contact" class="section contact-section">
         <div class="container">
-            <div class="footer-content">
-                <div class="availability-badge">
-                    <span class="dot"></span> Available for new projects
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Let's build something amazing together</p>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <h3>Email</h3>
+                        <a href="mailto:abrshiz@yahoo.com" class="contact-link">abrshiz@yahoo.com</a>
+                        <button class="copy-btn" data-clipboard-text="abrshiz@yahoo.com">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <h3>Phone</h3>
+                        <a href="tel:+251987075109" class="contact-link">+251 987 075 109</a>
+                    </div>
+
+                    <div class="contact-card">
+                        <div class="contact-icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <h3>Location</h3>
+                        <p>Dire Dawa, Ethiopia</p>
+                        <span class="contact-note">Available for remote work worldwide</span>
+                    </div>
                 </div>
 
-                <h2>Bringing ideas to life with code.</h2>
-
-                <p class="footer-location">
-                    <i class="fas fa-map-marker-alt"></i> Dire Dawa, Ethiopia
-                </p>
-
-                <p class="footer-subtitle">Focused on building functional, high-performance applications and modern web
-                    experiences.</p>
-
-                <div class="contact-methods">
-                    <a href="mailto:abrshiz@yahoo.com?subject=Project%20Inquiry"
-                        class="footer-email">abrshiz@yahoo.com</a>
-
-                    <a href="tel:+251987075109" class="btn-call">
-                        <i class="fas fa-phone-alt"></i> Call Me
-                    </a>
-                </div>
-
-                <div class="socials">
-                    <a href="https://github.com/abrshiz" target="_blank" rel="noopener noreferrer">
-                        <div class="social-icon-wrapper"><i class="fab fa-github"></i></div>
+                <div class="social-links">
+                    <a href="https://github.com/abrshiz" class="social-link" target="_blank">
+                        <i class="fab fa-github"></i>
                         <span>GitHub</span>
                     </a>
-                    <a href="https://linkedin.com/in/abrshiz" target="_blank" rel="noopener noreferrer">
-                        <div class="social-icon-wrapper"><i class="fab fa-linkedin"></i></div>
+                    <a href="https://linkedin.com/in/abrshiz" class="social-link" target="_blank">
+                        <i class="fab fa-linkedin"></i>
                         <span>LinkedIn</span>
                     </a>
-                    <a href="https://youtube.com/abrshiz" target="_blank" rel="noopener noreferrer">
-                        <div class="social-icon-wrapper"><i class="fab fa-youtube"></i></div>
+                    <a href="https://youtube.com/abrshiz" class="social-link" target="_blank">
+                        <i class="fab fa-youtube"></i>
                         <span>YouTube</span>
                     </a>
-                    <a href="https://t.me/abrshiz" target="_blank" rel="noopener noreferrer">
-                        <div class="social-icon-wrapper"><i class="fab fa-telegram"></i></div>
+                    <a href="https://t.me/abrshiz" class="social-link" target="_blank">
+                        <i class="fab fa-telegram"></i>
                         <span>Telegram</span>
                     </a>
-                    <a href="https://instagram.com/abrshiz" target="_blank" rel="noopener noreferrer">
-                        <div class="social-icon-wrapper"><i class="fa-brands fa-instagram"></i></div>
-                        <span>Instagram</span>
-                    </a>
                 </div>
+            </div>
 
-                <div class="footer-bottom">
-                    <p class="copyright">© 2026 abrshiz. Built with precision.</p>
-                    <a href="#home" class="back-to-top">Back to top <i class="fas fa-arrow-up"></i></a>
-                </div>
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 abrshiz. All rights reserved.</p>
+                <p class="footer-note">Built with <i class="fas fa-heart"></i> and clean code</p>
+                <a href="#home" class="back-to-top">
+                    <i class="fas fa-arrow-up"></i>
+                </a>
             </div>
         </div>
     </footer>
+
     <script src="script.js"></script>
 </body>
 

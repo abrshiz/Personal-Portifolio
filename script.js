@@ -1,25 +1,29 @@
 document.addEventListener('DOMContentLoaded', () => {
+    // 1. Mobile Navigation Toggle
+    const hamburger = document.querySelector('.hamburger');
+    const navMenu = document.querySelector('.nav-menu');
 
-    // 1. SMOOTH SCROLLING FOR NAV LINKS
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                window.scrollTo({
-                    top: target.offsetTop - 80, // Offset for fixed nav
-                    behavior: 'smooth'
-                });
-            }
+    hamburger.addEventListener('click', () => {
+        hamburger.classList.toggle('active');
+        navMenu.classList.toggle('active');
+    });
+
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
         });
     });
+
+    // 2. Theme Toggle
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
 
-    // Check for saved user preference
-    const currentTheme = localStorage.getItem('theme');
-    if (currentTheme) {
-        body.classList.add(currentTheme);
+    // Check for saved theme preference
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+        body.classList.add(savedTheme);
     }
 
     themeToggle.addEventListener('click', () => {
@@ -33,66 +37,145 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 2. COPY EMAIL TO CLIPBOARD
-    document.getElementById('copy-email').addEventListener('click', function (e) {
-        e.preventDefault(); // Prevents the page from jumping
+    // 3. Smooth Scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
 
-        const email = "abrshiz@yahoo.com";
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
 
-        // Copy to clipboard
-        navigator.clipboard.writeText(email).then(() => {
-            // Change button text temporarily to show it worked
-            const originalText = this.innerText;
-            this.innerText = "Email Copied!";
-            this.style.borderColor = "var(--accent-sky)";
-            this.style.color = "var(--accent-sky)";
-
-            // Revert back after 2 seconds
-            setTimeout(() => {
-                this.innerText = originalText;
-                this.style.borderColor = "";
-                this.style.color = "";
-            }, 2000);
-        }).catch(err => {
-            console.error('Failed to copy: ', err);
-        });
-    });
-
-    // 3. SCROLL REVEAL ANIMATION
-    // This uses the Intersection Observer API for high performance
-    const revealOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
-    };
-
-    const revealOnScroll = new IntersectionObserver((entries, observer) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('reveal-visible');
-                observer.unobserve(entry.target); // Animate only once
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
             }
         });
-    }, revealOptions);
-
-    // Elements to animate
-    const elementsToReveal = document.querySelectorAll('.project-card, .skill-item, .hero-content');
-
-    elementsToReveal.forEach(el => {
-        el.classList.add('reveal-hidden');
-        revealOnScroll.observe(el);
     });
 
-    // 4. NAVBAR SCROLL EFFECT
-    const nav = document.querySelector('nav');
+    // 4. Navbar Scroll Effect
+    const navbar = document.querySelector('.navbar');
+
     window.addEventListener('scroll', () => {
-        if (window.scrollY > 50) {
-            nav.style.background = "rgba(2, 6, 23, 0.95)";
-            nav.style.borderBottom = "1px solid rgba(255, 255, 255, 0.1)";
-            nav.style.padding = "1rem 10%";
+        if (window.scrollY > 100) {
+            navbar.style.background = 'var(--bg-overlay)';
+            navbar.style.boxShadow = '0 4px 20px var(--shadow-color)';
         } else {
-            nav.style.background = "rgba(2, 6, 23, 0.8)";
-            nav.style.borderBottom = "1px solid transparent";
-            nav.style.padding = "1.5rem 10%";
+            navbar.style.background = 'var(--bg-overlay)';
+            navbar.style.boxShadow = 'none';
+        }
+
+        // Update active nav link
+        updateActiveNavLink();
+    });
+
+    // 5. Active Nav Link on Scroll
+    function updateActiveNavLink() {
+        const sections = document.querySelectorAll('section[id]');
+        const scrollY = window.pageYOffset + 100;
+
+        sections.forEach(section => {
+            const sectionHeight = section.offsetHeight;
+            const sectionTop = section.offsetTop - 100;
+            const sectionId = section.getAttribute('id');
+
+            if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+                document.querySelector(`.nav-link[href="#${sectionId}"]`).classList.add('active');
+            } else {
+                document.querySelector(`.nav-link[href="#${sectionId}"]`).classList.remove('active');
+            }
+        });
+    }
+
+    // 6. Copy Email Functionality
+    const copyButtons = document.querySelectorAll('.copy-btn');
+
+    copyButtons.forEach(button => {
+        button.addEventListener('click', function () {
+            const email = this.getAttribute('data-clipboard-text');
+
+            navigator.clipboard.writeText(email).then(() => {
+                const originalHTML = this.innerHTML;
+                this.innerHTML = '<i class="fas fa-check"></i> Copied!';
+                this.style.color = 'var(--accent-success)';
+
+                setTimeout(() => {
+                    this.innerHTML = originalHTML;
+                    this.style.color = '';
+                }, 2000);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        });
+    });
+
+    // 7. Scroll Animations
+    const revealElements = document.querySelectorAll('.reveal');
+
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+            }
+        });
+    }, {
+        threshold: 0.1,
+        rootMargin: '0px 0px -100px 0px'
+    });
+
+    revealElements.forEach(element => {
+        revealObserver.observe(element);
+    });
+
+    // 8. Skill Bars Animation
+    const skillBars = document.querySelectorAll('.skill-progress');
+
+    const skillObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const skillBar = entry.target;
+                const width = skillBar.style.width;
+                skillBar.style.width = '0';
+
+                setTimeout(() => {
+                    skillBar.style.transition = 'width 1.5s ease-in-out';
+                    skillBar.style.width = width;
+                }, 300);
+            }
+        });
+    }, {
+        threshold: 0.5
+    });
+
+    skillBars.forEach(bar => {
+        skillObserver.observe(bar);
+    });
+
+    // 9. Project Card Hover Effect Enhancement
+    const projectCards = document.querySelectorAll('.project-card');
+
+    projectCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-10px) scale(1.02)';
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0) scale(1)';
+        });
+    });
+
+    // 10. Back to Top Button Visibility
+    const backToTop = document.querySelector('.back-to-top');
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 500) {
+            backToTop.style.opacity = '1';
+            backToTop.style.visibility = 'visible';
+        } else {
+            backToTop.style.opacity = '0';
+            backToTop.style.visibility = 'hidden';
         }
     });
 });
