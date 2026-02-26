@@ -60,6 +60,55 @@ body.light-mode {
     --shadow-color: rgba(0, 0, 0, 0.1);
 }
 
+/* Add these Bootstrap overrides at the top of your style.css */
+
+/* Fix Bootstrap interference with your theme */
+.btn,
+.navbar,
+.card,
+.modal,
+.dropdown {
+    transition: var(--transition-normal);
+}
+
+/* Override Bootstrap button styles to maintain your theme */
+.btn-primary {
+    background: var(--gradient-primary) !important;
+    border: none !important;
+}
+
+.btn-primary:hover {
+    background: var(--gradient-primary) !important;
+    opacity: 0.9;
+}
+
+/* Keep your navigation styles */
+.navbar {
+    background: transparent !important;
+    padding: 1rem 0;
+}
+
+.navbar .nav-link {
+    color: var(--text-secondary) !important;
+}
+
+.navbar .nav-link:hover {
+    color: var(--text-primary) !important;
+}
+
+/* Fix theme toggle button in Bootstrap navbar */
+.theme-btn {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+/* Ensure your card styles aren't overridden */
+.card {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-color) !important;
+}
+
+/* Rest of your existing CSS remains the same */
 /* Reset & Base Styles */
 * {
     margin: 0;
