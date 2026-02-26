@@ -36,4 +36,32 @@ Welcome to the repository for my personal software developer portfolio. This sit
 *   **Projects:** Cards for featured projects, each with a description, tech stack, and links.
 *   **Contact:** Contact cards with email (copy feature), phone, location, and links to GitHub, LinkedIn, YouTube, and Telegram.
 
-## 📂 Project Structure
+
+## 🧑‍💻 Local Development
+
+To run this project locally:
+
+1.  **Clone the repository:**
+    ```bash
+    git clone https://github.com/abrshiz/Personal-Portifolio.git
+    ```
+2.  **Navigate to the project directory:**
+    ```bash
+    cd Personal-Portifolio
+    ```
+3.  **Open `index.html` in your browser.** You can use a live server extension in VS Code for automatic reload on changes.
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE). Feel free to learn from it, but please attribute the original work if you use substantial parts of it.
+
+## 📬 Contact
+
+-   **Email:** abrshiz@yahoo.com
+-   **GitHub:** [@abrshiz](https://github.com/abrshiz)
+-   **LinkedIn:** [abrshiz](https://linkedin.com/in/abrshiz)
+-   **Telegram:** [@abrshiz](https://t.me/abrshiz)
+
+---
+
+**Built with ❤️ and clean code.**
