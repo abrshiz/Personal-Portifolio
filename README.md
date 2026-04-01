@@ -1,6 +1,6 @@
 # abrshiz - Software Developer Portfolio
 
-[![Live Site](https://img.shields.io/badge/Live%20Site-Click%20Here-brightgreen)](https://abrshiz-portifolio.netlify.app)
+[![Live Site](https://img.shields.io/badge/Live%20Site-Click%20Here-brightgreen)](https://abrshiz-portifolio.vercel.app/)
 
 Welcome to the repository for my personal software developer portfolio. This site showcases my projects, skills, and experience in full-stack development. It's designed to be a clean, modern, and responsive representation of my professional work.
 
