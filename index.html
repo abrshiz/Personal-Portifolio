@@ -560,25 +560,6 @@
     </footer>
 
     <script src="script.js"></script>
-    <!-- ADDED: tiny extra inline script for any additional personal flair (doesn't interfere with existing) -->
-    <script>
-        (function() {
-            // Just adding a small console greeting about you bro, doesn't change any class or remove anything
-            console.log("🔥 abrshiz portfolio — more than code: problem solver, mentor, and builder from Dire Dawa.");
-            // Optional: ensure copy buttons from existing code keep working if needed, but not interfering.
-            // Also adds a little interactive personal touch on the document title hover (optional, just for fun)
-            let originalTitle = document.title;
-            window.addEventListener('blur', () => {
-                document.title = "🤙 Come back, bro!";
-                setTimeout(() => {
-                    document.title = originalTitle;
-                }, 1500);
-            });
-            window.addEventListener('focus', () => {
-                document.title = originalTitle;
-            });
-        })();
-    </script>
 </body>
 
 </html>
