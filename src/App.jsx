@@ -27,7 +27,7 @@ function App() {
   ];
 
   const projects = [
-    { name: "AI Resume Analyzer", repo: "abrshiz/AI-Resume-Analyzer", desc: "AI-powered tool that parses and grades resumes automatically.", tags: ["Python", "AI", "NLP"], img: "/images/ScreenShoots/Ai%20Resume.png" },
+    { name: "AI Resume Analyzer", repo: "abrshiz/AI-Resume-Analyzer", desc: "AI-powered tool that parses and grades resumes automatically.", tags: ["Node.js", "AI", "Puter"], img: "/images/ScreenShoots/Ai%20Resume.png" },
     { name: "Local Services Marketplace", repo: "abrshiz/Local-Services-Marketplace", desc: "Connect with local service providers in your area.", tags: ["React", "Node.js", "MongoDB"], img: "/images/ScreenShoots/Local%20Service%20Market.png" },
     { name: "Restaurant Management", repo: "yab147/Restaurant-Management-system", desc: "End-to-end management system for restaurant operations.", tags: ["React", "Node.js", "MySQL"], img: "/images/ScreenShoots/Restaurant-Management-System.jpg" },
     { name: "Heart Disease Prediction", repo: "abrshiz/Heart-Disease-prediction", desc: "ML model that predicts heart disease risk from patient data.", tags: ["Python", "ML", "Scikit-learn"], img: "/images/ScreenShoots/Heart%20Disease.png" },
@@ -112,16 +112,16 @@ function App() {
           <div className="about-grid">
             <div className="about-text">
               <p>
-                I got into programming because I wanted to understand how things work under the hood. 
-                That curiosity turned into a real passion for building — from backend APIs and database 
+                I got into programming because I wanted to understand how things work under the hood.
+                That curiosity turned into a real passion for building — from backend APIs and database
                 systems to clean, responsive frontends.
               </p>
               <p>
-                I care about writing code that's easy to read and maintain. Whether it's a solo project 
+                I care about writing code that's easy to read and maintain. Whether it's a solo project
                 or a team collaboration, I try to keep things simple, tested, and well-documented.
               </p>
               <p>
-                Outside of coding, I'm usually exploring new tools, mentoring other devs, or just 
+                Outside of coding, I'm usually exploring new tools, mentoring other devs, or just
                 enjoying life in Dire Dawa.
               </p>
             </div>
