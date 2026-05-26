@@ -1,0 +1,31 @@
+{
+  "name": "port",
+  "version": "1.0.0",
+  "description": "[![Live Site](https://img.shields.io/badge/Live%20Site-Click%20Here-brightgreen)](https://abrshiz-portifolio.vercel.app/)",
+  "main": "script.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abrshiz/Personal-Portifolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/abrshiz/Personal-Portifolio/issues"
+  },
+  "homepage": "https://github.com/abrshiz/Personal-Portifolio#readme",
+  "dependencies": {
+    "react": "^19.2.6",
+    "react-dom": "^19.2.6"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.0.2",
+    "vite": "^8.0.14"
+  }
+}
