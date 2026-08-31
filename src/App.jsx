@@ -152,7 +152,7 @@ function App() {
               for the <span className="accent">web</span>.
             </h1>
             <p className="hero-desc">
-              Hey, I&apos;m Abrham — a full-stack developer from Dire Dawa. I like turning ideas into real,
+              Hey, I&apos;m Suhel — a full-stack developer from Dire Dawa. I like turning ideas into real,
               working software. Currently focused on React, Node, and Java.
             </p>
             <div className="hero-buttons">
