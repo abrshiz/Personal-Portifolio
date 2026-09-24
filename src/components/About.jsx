@@ -37,8 +37,8 @@ export default function About() {
                 {PROFILE.location}
               </li>
               <li>
-                <span>Alias</span>
-                {PROFILE.alias}
+                <span>Handle</span>
+                @{PROFILE.handle}
               </li>
             </ul>
           </div>

@@ -1,7 +1,6 @@
 export const PROFILE = {
   name: 'Abrham Wendesen Tadesse',
   handle: 'abrshiz',
-  alias: 'Suhel',
   role: 'Full-Stack Developer',
   location: 'Dire Dawa, Ethiopia',
   timezone: 'EAT (UTC+3) · Remote friendly',
