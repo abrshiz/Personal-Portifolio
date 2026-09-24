@@ -72,7 +72,7 @@ export const PROJECTS = [
     detail:
       'Extracts structure from uploaded resumes, scores them against role criteria, and returns actionable feedback in seconds.',
     tags: ['Node.js', 'AI', 'Puter'],
-    img: '/images/ScreenShoots/Ai%20Resume.png',
+    img: '/images/ScreenShoots/ai-resume.png',
     featured: true,
   },
   {
@@ -82,7 +82,7 @@ export const PROJECTS = [
     detail:
       'A two-sided marketplace with provider profiles, search by location and category, and a booking flow backed by MongoDB.',
     tags: ['React', 'Node.js', 'MongoDB'],
-    img: '/images/ScreenShoots/Local%20Service%20Market.png',
+    img: '/images/ScreenShoots/local-service-market.png',
     featured: true,
   },
   {
@@ -92,7 +92,7 @@ export const PROJECTS = [
     detail:
       'Covers orders, menu, inventory and staff in one dashboard, with a MySQL schema designed around daily service workflows.',
     tags: ['React', 'Node.js', 'MySQL'],
-    img: '/images/ScreenShoots/Restaurant-Management-System.jpg',
+    img: '/images/ScreenShoots/restaurant-management.jpg',
     featured: true,
   },
   {
@@ -100,56 +100,56 @@ export const PROJECTS = [
     repo: 'abrshiz/Heart-Disease-prediction',
     desc: 'ML model that predicts heart disease risk from patient data.',
     tags: ['Python', 'ML', 'Scikit-learn'],
-    img: '/images/ScreenShoots/Heart%20Disease.png',
+    img: '/images/ScreenShoots/heart-disease.png',
   },
   {
     name: 'Chaos Security Monkey',
     repo: 'Ethiopian-Cursor-Community/Chaos-Security-Monkey',
     desc: 'Security testing tool for checking infrastructure resilience.',
     tags: ['Security', 'Testing', 'DevOps'],
-    img: '/images/ScreenShoots/Chaos%20Monkey.webp',
+    img: '/images/ScreenShoots/chaos-monkey.webp',
   },
   {
     name: 'WorkDesk',
     repo: 'abrshiz/WorkDesk',
     desc: 'A workspace and productivity management tool.',
     tags: ['React', 'Node.js'],
-    img: '/images/ScreenShoots/WorkDEsk.png',
+    img: '/images/ScreenShoots/workdesk.png',
   },
   {
     name: 'Simple E-Commerce',
     repo: 'abrshiz/Simple-E-Commerce',
     desc: 'A clean, lightweight online shopping platform.',
     tags: ['JavaScript', 'CSS', 'HTML'],
-    img: '/images/ScreenShoots/E-Commerce.jpg',
+    img: '/images/ScreenShoots/e-commerce.jpg',
   },
   {
     name: 'Attendance Checker',
     repo: 'abrshiz/Attendance-Checker',
     desc: 'Streamlined tool for tracking student attendance.',
     tags: ['Java', 'MySQL'],
-    img: '/images/ScreenShoots/Attendance.jpg',
+    img: '/images/ScreenShoots/attendance.jpg',
   },
   {
     name: 'OpenGL Rolling Ball',
     repo: 'abrshiz/Rolling-Ball',
     desc: '3D graphics game built from scratch with OpenGL.',
     tags: ['C++', 'OpenGL', 'GLUT'],
-    img: '/images/ScreenShoots/Open%20GL.webp',
+    img: '/images/ScreenShoots/open-gl.webp',
   },
   {
     name: 'Real-time Chat App',
     repo: 'abrshiz/Java-Oriented-Socket-Chat-App',
     desc: 'Multi-client chat system with under 20ms local latency.',
     tags: ['Java', 'Sockets', 'Threading'],
-    img: '/images/ScreenShoots/chatApp.avif',
+    img: '/images/ScreenShoots/chat-app.avif',
   },
   {
     name: 'Hospital Management',
     repo: 'wegen-jr/java-project',
     desc: 'Full hospital suite — patients, scheduling, billing.',
     tags: ['Java', 'Swing', 'MySQL'],
-    img: '/images/ScreenShoots/HMS.webp',
+    img: '/images/ScreenShoots/hms.webp',
   },
 ];
 
