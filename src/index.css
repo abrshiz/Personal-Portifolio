@@ -138,6 +138,43 @@ h3 {
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
+.scene {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.scene-floor {
+  position: absolute;
+  inset: -40% -10% 0;
+  background-image: linear-gradient(rgba(62, 207, 142, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(62, 207, 142, 0.08) 1px, transparent 1px);
+  background-size: 56px 56px;
+  transform: perspective(720px) rotateX(62deg) translateY(12%);
+  transform-origin: 50% 100%;
+  mask-image: linear-gradient(to bottom, transparent 38%, #000 70%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 38%, #000 70%, transparent 100%);
+}
+
+.scene-orb {
+  position: absolute;
+  top: -140px;
+  right: 8%;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(62, 207, 142, 0.16), transparent 68%);
+  filter: blur(8px);
+}
+
+main,
+.footer {
+  position: relative;
+  z-index: 2;
+}
+
 .reveal {
   opacity: 0;
   transform: translate3d(0, 22px, 0);
@@ -147,6 +184,41 @@ h3 {
 .reveal.is-in {
   opacity: 1;
   transform: none;
+}
+
+/* ══════════════════════════  3D primitives  ══════════════════════════ */
+.tilt,
+.terminal-frame {
+  perspective: 1100px;
+}
+
+.tilt > *,
+.terminal-frame > .terminal {
+  transform: rotateX(var(--rx, 6deg)) rotateY(var(--ry, -8deg))
+    translateZ(calc(var(--lift, 0) * 22px));
+  transform-style: preserve-3d;
+  transition: transform 0.45s var(--ease), box-shadow 0.45s var(--ease),
+    border-color var(--t-fast);
+  will-change: transform;
+}
+
+.glare {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--t);
+  background: radial-gradient(
+    420px circle at var(--mx, 50%) var(--my, 50%),
+    rgba(255, 255, 255, 0.09),
+    transparent 60%
+  );
+}
+
+.tilt:hover .glare,
+.terminal-frame:hover .glare {
+  opacity: 1;
 }
 
 /* ══════════════════════════  Buttons  ══════════════════════════ */
@@ -509,11 +581,17 @@ h3 {
 
 /* ══════════════════════════  Terminal  ══════════════════════════ */
 .terminal {
+  position: relative;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: linear-gradient(180deg, #0c0d0f, #0a0b0c);
-  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset, 0 32px 70px -28px rgba(0, 0, 0, 0.9);
+  box-shadow: 0 1px 0 rgba(255, 255, 255, 0.04) inset,
+    0 calc(24px + var(--lift, 0) * 16px) calc(60px + var(--lift, 0) * 30px) -28px rgba(0, 0, 0, 0.95);
   overflow: hidden;
+}
+
+.terminal-frame:hover .terminal {
+  border-color: var(--line-2);
 }
 
 .terminal-bar {
@@ -731,10 +809,12 @@ h3 {
 }
 
 .portrait {
+  position: relative;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   overflow: hidden;
   background: var(--panel);
+  box-shadow: 0 calc(var(--lift, 0) * 24px) calc(var(--lift, 0) * 44px) -20px rgba(0, 0, 0, 0.9);
 }
 
 .portrait img {
@@ -844,9 +924,14 @@ h3 {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
+  perspective: 600px;
 }
 
 .chip {
+  list-style: none;
+}
+
+.chip-inner {
   display: inline-flex;
   align-items: center;
   gap: 0.55rem;
@@ -855,17 +940,17 @@ h3 {
   border-radius: var(--radius-sm);
   background: var(--panel);
   font-size: 0.82rem;
-  transition: border-color var(--t-fast), transform var(--t-fast), background var(--t-fast);
+  box-shadow: 0 calc(var(--lift, 0) * 16px) calc(var(--lift, 0) * 28px) -16px rgba(0, 0, 0, 0.8);
 }
 
-.chip:hover {
+.chip:hover .chip-inner {
   border-color: var(--line-2);
   background: var(--panel-2);
-  transform: translateY(-2px);
 }
 
 .chip i {
   font-size: 1.1rem;
+  transform: translateZ(18px);
 }
 
 /* ══════════════════════════  Work  ══════════════════════════ */
@@ -881,29 +966,35 @@ h3 {
   align-items: center;
 }
 
-.feature:nth-child(even) .feature-media {
+.feature:nth-child(even) .feature-frame {
   order: 2;
 }
 
 .feature-media {
+  position: relative;
   display: block;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: var(--panel);
+  box-shadow: 0 calc(var(--lift, 0) * 26px) calc(var(--lift, 0) * 48px) -22px rgba(0, 0, 0, 0.9);
+}
+
+.feature-frame:hover .feature-media {
+  border-color: var(--line-2);
 }
 
 .feature-media img {
   width: 100%;
   aspect-ratio: 16 / 10;
   object-fit: cover;
-  transition: transform 0.6s var(--ease), opacity var(--t);
-  opacity: 0.88;
+  object-position: top center;
+  display: block;
+  transition: transform 0.6s var(--ease);
 }
 
 .feature:hover .feature-media img {
-  transform: scale(1.03);
-  opacity: 1;
+  transform: scale(1.04);
 }
 
 .feature-index {
@@ -940,68 +1031,95 @@ h3 {
   color: var(--fg-3);
 }
 
-.repo-list li {
-  border-top: 1px solid var(--line);
-}
-
-.repo-list li:last-child {
-  border-bottom: 1px solid var(--line);
-}
-
-.repo-list a {
+.work-grid {
   display: grid;
-  grid-template-columns: 3rem minmax(0, 1fr) auto 1.5rem;
-  align-items: center;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 1.5rem;
-  padding: 1.15rem 0.75rem;
-  border-radius: var(--radius-sm);
-  transition: background var(--t-fast), padding var(--t-fast);
 }
 
-.repo-list a:hover {
-  background: var(--panel);
-  padding-inline: 1rem 0.5rem;
-}
-
-.repo-index {
-  font-size: 0.75rem;
-  color: var(--fg-3);
-}
-
-.repo-main {
+.work-card > a {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
-  min-width: 0;
+  height: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--panel);
+  box-shadow: 0 calc(var(--lift, 0) * 20px) calc(var(--lift, 0) * 40px) -20px rgba(0, 0, 0, 0.9);
 }
 
-.repo-name {
-  font-size: 1rem;
-  font-weight: 550;
+.work-card:hover > a {
+  border-color: var(--line-2);
 }
 
-.repo-desc {
-  font-size: 0.85rem;
-  color: var(--fg-3);
+.work-media {
+  display: block;
+  overflow: hidden;
+  border-bottom: 1px solid var(--line);
+  border-radius: var(--radius) var(--radius) 0 0;
+  background: var(--bg-soft);
 }
 
-.repo-tags {
+.work-media img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  object-fit: cover;
+  object-position: top center;
+  display: block;
+  transition: transform 0.6s var(--ease);
+}
+
+.work-card:hover .work-media img {
+  transform: scale(1.05);
+}
+
+.work-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  gap: 0.4rem;
+  padding: 1.1rem 1.2rem 1.25rem;
+  transform: translateZ(26px);
+}
+
+.work-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   font-size: 0.72rem;
   color: var(--fg-3);
-  white-space: nowrap;
 }
 
-.repo-icon {
-  font-size: 0.72rem;
-  color: var(--fg-3);
+.work-top i {
+  font-size: 0.7rem;
   opacity: 0;
-  transition: opacity var(--t-fast), color var(--t-fast), transform var(--t-fast);
+  transition: opacity var(--t-fast), transform var(--t-fast), color var(--t-fast);
 }
 
-.repo-list a:hover .repo-icon {
+.work-card:hover .work-top i {
   opacity: 1;
   color: var(--accent);
   transform: translate(2px, -2px);
+}
+
+.work-name {
+  font-size: 1rem;
+  font-weight: 550;
+  letter-spacing: -0.02em;
+}
+
+.work-desc {
+  flex: 1;
+  font-size: 0.86rem;
+  color: var(--fg-3);
+  line-height: 1.55;
+}
+
+.work-body .tag-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin: 0.65rem 0 0;
 }
 
 /* ══════════════════════════  Contact  ══════════════════════════ */
@@ -1112,7 +1230,7 @@ h3 {
     gap: 2rem;
   }
 
-  .feature:nth-child(even) .feature-media {
+  .feature:nth-child(even) .feature-frame {
     order: 0;
   }
 
@@ -1185,17 +1303,12 @@ h3 {
     gap: 3rem;
   }
 
-  .repo-list a {
-    grid-template-columns: 2.25rem minmax(0, 1fr) 1.25rem;
-    gap: 0.9rem;
-    padding: 1rem 0.4rem;
+  .work-grid {
+    grid-template-columns: 1fr;
+    gap: 1.1rem;
   }
 
-  .repo-tags {
-    display: none;
-  }
-
-  .repo-icon {
+  .work-top i {
     opacity: 0.5;
   }
 
@@ -1213,9 +1326,25 @@ h3 {
   }
 }
 
+@media (hover: none) {
+  .tilt > *,
+  .terminal-frame > .terminal {
+    transform: none !important;
+  }
+
+  .glare {
+    display: none;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
+  }
+
+  .tilt > *,
+  .terminal-frame > .terminal {
+    transform: none !important;
   }
 
   *,

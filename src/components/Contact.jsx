@@ -1,5 +1,6 @@
 import { CONTACT, PROFILE, SOCIALS } from '../data';
 import SectionHead from './SectionHead';
+import Tilt from './Tilt';
 
 export default function Contact() {
   return (
@@ -38,18 +39,20 @@ export default function Contact() {
             </ul>
           </div>
 
-          <ul className="contact-details">
-            {CONTACT.map((item) => (
-              <li key={item.key}>
-                <span className="contact-label mono">{item.label}</span>
-                {item.href ? (
-                  <a href={item.href}>{item.value}</a>
-                ) : (
-                  <span>{item.value}</span>
-                )}
-              </li>
-            ))}
-          </ul>
+          <Tilt className="contact-panel" max={10} restX={6} restY={8}>
+            <ul className="contact-details">
+              {CONTACT.map((item) => (
+                <li key={item.key}>
+                  <span className="contact-label mono">{item.label}</span>
+                  {item.href ? (
+                    <a href={item.href}>{item.value}</a>
+                  ) : (
+                    <span>{item.value}</span>
+                  )}
+                </li>
+              ))}
+            </ul>
+          </Tilt>
         </div>
       </div>
     </section>

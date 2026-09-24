@@ -150,8 +150,33 @@ export default function Terminal() {
 
   const bodyRef = useRef(null);
   const inputRef = useRef(null);
+  const frameRef = useRef(null);
   const history = useRef([]);
   const historyIndex = useRef(-1);
+
+  const setTilt = useCallback((rx, ry, mx, my) => {
+    const frame = frameRef.current;
+    if (!frame) return;
+    frame.style.setProperty('--rx', `${rx}deg`);
+    frame.style.setProperty('--ry', `${ry}deg`);
+    frame.style.setProperty('--lift', mx === undefined ? '0' : '1');
+    if (mx !== undefined) frame.style.setProperty('--mx', `${mx}%`);
+    if (my !== undefined) frame.style.setProperty('--my', `${my}%`);
+  }, []);
+
+  const handleTilt = (event) => {
+    if (focused || reducedMotion() || window.matchMedia('(hover: none)').matches) return;
+    const frame = frameRef.current;
+    if (!frame) return;
+    const rect = frame.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    setTilt((-y * 12).toFixed(2), (x * 14).toFixed(2), ((x + 0.5) * 100).toFixed(1), ((y + 0.5) * 100).toFixed(1));
+  };
+
+  useEffect(() => {
+    if (focused) setTilt(7, -10);
+  }, [focused, setTilt]);
 
   const openUrl = useCallback((url) => window.open(url, '_blank', 'noopener,noreferrer'), []);
 
@@ -265,74 +290,90 @@ export default function Terminal() {
   const focusInput = () => inputRef.current?.focus();
 
   return (
-    <div className="terminal" onClick={focusInput}>
-      <div className="terminal-bar">
-        <span className="terminal-dots" aria-hidden="true">
-          <i />
-          <i />
-          <i />
-        </span>
-        <span className="terminal-title mono">{PROFILE.handle}@portfolio — zsh</span>
-        <span className="terminal-badge mono" aria-hidden="true">
-          interactive
-        </span>
-      </div>
+    <div
+      className="terminal-frame"
+      ref={frameRef}
+      style={{ '--rx': '7deg', '--ry': '-10deg' }}
+      onPointerMove={handleTilt}
+      onPointerLeave={() => setTilt(7, -10)}
+    >
+      <div className="terminal" onClick={focusInput}>
+        <div className="terminal-bar">
+          <span className="terminal-dots" aria-hidden="true">
+            <i />
+            <i />
+            <i />
+          </span>
+          <span className="terminal-title mono">{PROFILE.handle}@portfolio — zsh</span>
+          <span className="terminal-badge mono" aria-hidden="true">
+            interactive
+          </span>
+        </div>
 
-      <div className="terminal-body" ref={bodyRef} role="log" aria-live="polite" aria-label="Portfolio terminal output">
-        {lines.map((entry) => {
-          if (entry.kind === 'cmd') {
+        <div
+          className="terminal-body"
+          ref={bodyRef}
+          role="log"
+          aria-live="polite"
+          aria-label="Portfolio terminal output"
+        >
+          {lines.map((entry) => {
+            if (entry.kind === 'cmd') {
+              return (
+                <p className="term-line" key={entry.id}>
+                  <span className="term-prompt">{PROMPT}</span> {entry.text}
+                </p>
+              );
+            }
+            if (entry.kind === 'link') {
+              return (
+                <p className="term-line term-link" key={entry.id}>
+                  <a href={entry.href} target="_blank" rel="noreferrer">
+                    {entry.text}
+                  </a>
+                </p>
+              );
+            }
             return (
-              <p className="term-line" key={entry.id}>
-                <span className="term-prompt">{PROMPT}</span> {entry.text}
+              <p className={`term-line term-${entry.kind}`} key={entry.id}>
+                {entry.text || '\u00a0'}
               </p>
             );
-          }
-          if (entry.kind === 'link') {
-            return (
-              <p className={`term-line term-link`} key={entry.id}>
-                <a href={entry.href} target="_blank" rel="noreferrer">
-                  {entry.text}
-                </a>
-              </p>
-            );
-          }
-          return (
-            <p className={`term-line term-${entry.kind}`} key={entry.id}>
-              {entry.text || '\u00a0'}
+          })}
+
+          {booting && ghostCommand && (
+            <p className="term-line">
+              <span className="term-prompt">{PROMPT}</span> {ghostCommand}
+              <span className="term-caret is-on" />
             </p>
-          );
-        })}
+          )}
 
-        {booting && ghostCommand && (
-          <p className="term-line">
-            <span className="term-prompt">{PROMPT}</span> {ghostCommand}
-            <span className="term-caret is-on" />
-          </p>
-        )}
+          {!booting && (
+            <label className="term-entry">
+              <span className="term-prompt">{PROMPT}</span>
+              <span className="term-value">
+                {input}
+                <span className={`term-caret ${focused ? 'is-on' : ''}`} />
+              </span>
+              <input
+                ref={inputRef}
+                className="term-field"
+                value={input}
+                onChange={(event) => setInput(event.target.value)}
+                onKeyDown={handleKeyDown}
+                onFocus={() => setFocused(true)}
+                onBlur={() => setFocused(false)}
+                aria-label="Terminal command input"
+                autoComplete="off"
+                autoCapitalize="off"
+                autoCorrect="off"
+                spellCheck="false"
+              />
+            </label>
+          )}
+        </div>
 
-        {!booting && (
-          <label className="term-entry">
-            <span className="term-prompt">{PROMPT}</span>
-            <span className="term-value">
-              {input}
-              <span className={`term-caret ${focused ? 'is-on' : ''}`} />
-            </span>
-            <input
-              ref={inputRef}
-              className="term-field"
-              value={input}
-              onChange={(event) => setInput(event.target.value)}
-              onKeyDown={handleKeyDown}
-              onFocus={() => setFocused(true)}
-              onBlur={() => setFocused(false)}
-              aria-label="Terminal command input"
-              autoComplete="off"
-              autoCapitalize="off"
-              autoCorrect="off"
-              spellCheck="false"
-            />
-          </label>
-        )}
+        <span className="glare" aria-hidden="true" />
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import { FOCUS_AREAS, PROFILE } from '../data';
 import SectionHead from './SectionHead';
+import Tilt from './Tilt';
 
 export default function About() {
   return (
@@ -9,16 +10,19 @@ export default function About() {
 
         <div className="about-grid">
           <div className="about-aside">
-            <figure className="portrait">
-              <img
-                src={PROFILE.photo}
-                alt={PROFILE.name}
-                width={420}
-                height={500}
-                loading="lazy"
-                decoding="async"
-              />
-            </figure>
+            <Tilt className="portrait-frame" max={14} restX={7} restY={-10}>
+              <figure className="portrait">
+                <img
+                  src={PROFILE.photo}
+                  alt={PROFILE.name}
+                  width={420}
+                  height={500}
+                  loading="lazy"
+                  decoding="async"
+                />
+                <span className="glare" aria-hidden="true" />
+              </figure>
+            </Tilt>
             <ul className="meta-list mono">
               <li>
                 <span>Name</span>

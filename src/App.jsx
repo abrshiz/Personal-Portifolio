@@ -41,6 +41,10 @@ export default function App() {
         Skip to content
       </a>
       <div className="grain" aria-hidden="true" />
+      <div className="scene" aria-hidden="true">
+        <div className="scene-floor" />
+        <div className="scene-orb" />
+      </div>
 
       <Nav />
 
