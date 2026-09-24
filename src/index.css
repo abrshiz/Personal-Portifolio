@@ -1138,7 +1138,20 @@ body.is-scrolled .nav-shell {
   }
 
   .stat-row {
-    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .stat-card .tilt-inner {
+    padding: 0.9rem 0.7rem;
+  }
+
+  .stat-card h3 {
+    font-size: 1.35rem;
+  }
+
+  .stat-card p {
+    font-size: 0.7rem;
+    line-height: 1.4;
   }
 
   .projects-grid {
