@@ -61,7 +61,7 @@ function runCommand(raw, helpers) {
     case 'whoami':
       return [
         line(PROFILE.name, 'accent'),
-        line(`${PROFILE.role} — also goes by ${PROFILE.alias}`),
+        line(`${PROFILE.role} · @${PROFILE.handle}`),
         line(`${PROFILE.location} · ${PROFILE.timezone}`, 'dim'),
         line(),
         line(`● ${PROFILE.status}`, 'ok'),
